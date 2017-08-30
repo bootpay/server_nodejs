@@ -5,7 +5,7 @@
 
 var rest = require('restler');
 
-const BASE_URL = 'https://dev-api.bootpay.co.kr/';
+const BASE_URL = 'https://api.bootpay.co.kr/';
 const CONFIRM_URL = BASE_URL + 'receipt/';
 const CANCEL_URL = BASE_URL + 'cancel';
 
