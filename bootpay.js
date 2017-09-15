@@ -24,7 +24,7 @@ BootpayApi.prototype.confirm = function (receipt_id, res) {
     rest.get(CONFIRM_URL + receipt_id, {
         query: {
             application_id: this.application_id,
-            pk: this.private_key
+            private_key: this.private_key
         }
     }).on('complete', function(data, response) {
         res(data);
@@ -40,7 +40,7 @@ BootpayApi.prototype.cancel = function (receipt_id, name, reason, res) {
     var args = {
         query: {
             application_id: this.application_id,
-            pk: this.private_key,
+            private_key: this.private_key,
             receipt_id: receipt_id,
             name: name,
             reason: reason,
