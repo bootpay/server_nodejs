@@ -38,7 +38,7 @@ BootpayApi.prototype.cancel = function (receipt_id, name, reason, res) {
     if(reason == undefined) throw 'reason 값이 비어있습니다.';
 
     var args = {
-        query: {
+        data: {
             application_id: this.application_id,
             private_key: this.private_key,
             receipt_id: receipt_id,
