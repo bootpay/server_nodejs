@@ -7,8 +7,10 @@ BootpayRest.setConfig(
 );
 
 
-BootpayRest.getAccessToken(function (data) {
-    BootpayRest.subscribeBilling('5b025b33e13f33310ce560fb', '정기결제입니다.', 1000, (new Date()).getTime(), [], function (data) {
+BootpayRest.getAccessToken()
+.then(function(data) {
+    BootpayRest.subscribeBilling('5b025b33e13f33310ce560fb', '정기결제입니다.', 1000, (new Date()).getTime(), [])
+    .then(function(data) {
         console.log(data);
     });
 });

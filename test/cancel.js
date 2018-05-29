@@ -8,7 +8,8 @@ BootpayRest.setConfig(
 
 
 BootpayRest.getAccessToken(function (data) {
-    BootpayRest.cancel('1234', '테스트', '테스트입니다.', function (data) {
-        console.log(data);
+    BootpayRest.cancel('1234')
+    .then(function(data) {
+       console.log(data);
     });
 });

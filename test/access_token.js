@@ -7,6 +7,7 @@ BootpayRest.setConfig(
 );
 
 
-BootpayRest.getAccessToken(function (data) {
-    console.log(data);
+BootpayRest.getAccessToken()
+.then(function(data) {
+   console.log(data);
 });
