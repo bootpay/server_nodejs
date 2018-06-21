@@ -7,9 +7,8 @@ BootpayRest.setConfig(
 );
 
 
-BootpayRest.getAccessToken(function (data) {
-    BootpayRest.cancel('1234')
-    .then(function(data) {
-       console.log(data);
+BootpayRest.getAccessToken().then(function (data) {
+    BootpayRest.cancel('5b0df1b8e13f332c6c83df6a', 1000, '취소함', '취소합니다').then(function (data) {
+        console.log(data);
     });
 });
