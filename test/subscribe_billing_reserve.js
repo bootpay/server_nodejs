@@ -14,7 +14,7 @@ BootpayRest.getAccessToken()
             '정기결제입니다.',
             1000,
             (new Date()).getTime(),
-            ((new Date()).getTime() + 10000) / 1000,
+            parseInt(new Date().getTime() / 1000) + 3600, // 1시간 뒤 실행
             "https://dev-api.bootpay.co.kr/callback"
         ).then(function (data) {
             console.log(data);
