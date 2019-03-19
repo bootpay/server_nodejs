@@ -17,7 +17,10 @@ BootpayRest.getAccessToken().then(function (data) {
         expireYear: '[ 카드 만료 연도 ]',
         expireMonth: '[ 카드 만료 월 ]',
         identifyNumber: '[ 카드 소유주 생년월일 혹은 법인 번호 ]'
-    }).then(function (data) {
+    }).then(function (response) {
         console.log(data);
     });
+
+    // 발급 받은 빌링키를 취소하는 로직이다.
+    BootpayRest.destroySubscribeBillingKey('[[ billing key ]]');
 });
