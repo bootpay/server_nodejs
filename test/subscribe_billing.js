@@ -15,10 +15,9 @@ BootpayRest.getAccessToken()
                 username: '홍길동',
                 phone: '010-0000-0000',
                 address: '서울특별시 구로구'
-            })
-                .then(function (data) {
-                    console.log(data);
-                });
+            }).then(function (data) {
+                console.log(data);
+            });
         },
         // Access Token을 가져오는데 실패한 경우
         function (data) {
