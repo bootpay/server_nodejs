@@ -18,11 +18,20 @@ npm install restler
 ```nodejs 
 var Bootpay = require('./bootpay');
 
-var bootpay = new Bootpay('application_id_value_1234', '593f8febe13f332431a8ddaw');
-//
-bootpay.confirm('593f8febe13f332431a8ddae', function(data) {
-    console.log(data);
+BootpayRest.setConfig(
+    '[[ REST용 application id ]]',
+    '[[ Private Key ]]'    
+);
+
+BootpayRest.getAccessToken().then(function (tokenData) {
+    if (tokenData.status === 200) {
+        BootpayRest.verify('1234')
+            .then(function (data) {
+                console.log(data);
+            });
+    } else {
+        console.log('error!')
+    }
 });
-```
 
 ### 더 자세한 정보는 [Docs](https://docs.bootpay.co.kr/api/validate?languageCurrentIndex=2)를 참조해주세요. 

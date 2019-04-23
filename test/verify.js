@@ -7,13 +7,12 @@ BootpayRest.setConfig(
 );
 
 
-BootpayRest.getAccessToken()
-.then(function(tokenData) {
+BootpayRest.getAccessToken().then(function (tokenData) {
     if (tokenData.status === 200) {
         BootpayRest.verify('1234')
-        .then(function (data) {
-            console.log(data);
-        });
+            .then(function (data) {
+                console.log(data);
+            });
     } else {
         console.log('error!')
     }
