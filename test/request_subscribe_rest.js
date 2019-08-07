@@ -15,7 +15,10 @@ BootpayRest.getAccessToken().then(function (data) {
         cardPw: '[ 카드 비밀번호 앞 2자리 ]',
         expireYear: '[ 카드 만료 연도 ]',
         expireMonth: '[ 카드 만료 월 ]',
-        identifyNumber: '[ 카드 소유주 생년월일 혹은 법인 번호 ]'
+        identifyNumber: '[ 카드 소유주 생년월일 혹은 법인 번호 ]',
+        extra: {
+            subscribe_test_payment: 1 // 100원 결제 후 결제가 되면 billing key를 발행, 결제가 실패하면 에러
+        }
     }).then(function (response) {
         console.log(response);
         // 발급 받은 키를 삭제하는 로직입니다.
