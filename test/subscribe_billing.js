@@ -16,6 +16,8 @@ BootpayRest.getAccessToken()
                 address: '서울특별시 구로구'
             }).then(function (data) {
                 console.log(data);
+            }, function (data) {
+                console.log(data);
             });
         },
         // Access Token을 가져오는데 실패한 경우
