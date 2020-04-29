@@ -18,7 +18,7 @@ BootpayRest.getAccessToken()
         ).then(function (data) {
             console.log(data);
             // 예약된 빌링키 취소
-            BootpayRest.destroySubscribeBillingKey(data.reserve_id).then(
+            BootpayRest.destroySubscribeBillingReserveCancel(data.reserve_id).then(
                 function(data) {
                     console.log(data)
                 }
