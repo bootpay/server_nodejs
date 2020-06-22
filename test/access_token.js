@@ -2,11 +2,11 @@ var BootpayRest = require('../lib/bootpay');
 
 BootpayRest.setConfig(
     '59bfc738e13f337dbd6ca48a',
-    'FQj3jOvQYp053nxzWxHSuw+cq3zUlSWZV2ec/8fkiyA='
+    'pDc0NwlkEX3aSaHTp/PPL/i8vn5E/CqRChgyEp/gHD0=',
+    'development'
 );
 
-
-BootpayRest.getAccessToken()
-.then(function(data) {
-   console.log(data);
-});
+(async () => {
+    let response = await BootpayRest.getAccessToken();
+    console.log(response);
+})()
