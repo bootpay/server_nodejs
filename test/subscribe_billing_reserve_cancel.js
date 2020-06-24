@@ -12,7 +12,7 @@ BootpayRest.setConfig(
         let response
         try {
             response = await BootpayRest.subscribeBillingReserve(
-                '5b025b33e13f33310ce560fb',
+                '5ef30dd58a1a350391ecdce3',
                 '정기결제입니다.',
                 1000,
                 (new Date()).getTime(),
