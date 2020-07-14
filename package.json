@@ -1,6 +1,6 @@
 {
   "name": "bootpay-rest-client",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Bootpay Rest Client Javasrcipt Library",
   "main": "lib/bootpay.js",
   "dependencies": {

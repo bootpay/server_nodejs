@@ -1,4 +1,4 @@
-var BootpayRest = require('../lib/bootpay');
+let BootpayRest = require('../lib/bootpay');
 
 BootpayRest.setConfig(
     '59bfc738e13f337dbd6ca48a',
@@ -11,7 +11,7 @@ BootpayRest.setConfig(
     if (response.status === 200) {
         let result
         try {
-            result = await BootpayRest.verify('1234')
+            result = await BootpayRest.verify('5f0d42a7d111902931bea5ff')
         } catch (e) {
             return console.log(e.error)
         }
