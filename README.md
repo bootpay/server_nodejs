@@ -1,5 +1,10 @@
-# 2.0.0 Release 
-### 변경된 점
+# 3.0.0 ( next ) - Nightly Version
+
+### 3.0.0 변경된 점
+* request.js -> axios로 변경 되었습니다.
+
+ 
+### 2.0.0 변경된 점
 * 보안취약점 노출된 Restler -> request-promise-native 로 변경하였습니다.
 * ES6 Syntax로 변경되었습니다.
 * Error 처리를 유연하게 할 수 있도록 예제가 변경되었습니다.
