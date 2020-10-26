@@ -13,7 +13,7 @@ BootpayRest.setConfig(
         try {
             response = await BootpayRest.certificate('1234')
         } catch (e) {
-            return console.log(e.error)
+            return console.log(e.data)
         }
         console.log(response)
     }

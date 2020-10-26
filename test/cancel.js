@@ -13,7 +13,7 @@ BootpayRest.setConfig(
         try {
             response = await BootpayRest.cancel('5b0df1b8e13f332c6c83df6a', 1000, '취소함', '취소합니다')
         } catch (e) {
-            return console.log(e.error)
+            return console.log(e.data)
         }
         console.log(response)
     }
