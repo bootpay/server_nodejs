@@ -13,7 +13,7 @@ BootpayRest.setConfig(
         try {
             response = await BootpayRest.destroySubscribeBillingKey('5ef30dd58a1a350391ecdce3')
         } catch (e) {
-            response = e.error
+            response = e.data
         }
         console.log(response)
     }

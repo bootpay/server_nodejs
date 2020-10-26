@@ -20,7 +20,7 @@ BootpayRest.setConfig(
                 "https://dev-api.bootpay.co.kr/callback"
             )
         } catch (e) {
-            response = e.error
+            response = e.data
         }
         console.log(response)
         if (response.status === 200) {

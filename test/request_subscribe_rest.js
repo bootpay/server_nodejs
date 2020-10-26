@@ -25,7 +25,7 @@ BootpayRest.setConfig(
                 }
             })
         } catch (e) {
-            return console.log(e.error)
+            return console.log(e.data)
         }
         console.log(response)
     }
