@@ -6,7 +6,7 @@
 ## 샘플 코드 
 ### NPM으로 다운 받은 경우
 ```nodejs 
-const RestClient = require('bootpay-rest-client')
+const RestClient = require('bootpay-server-client')
 
 RestClient.setConfig(
     '59bfc738e13f337dbd6ca48a',
@@ -26,7 +26,7 @@ RestClient.getAccessToken().then(
 ```
 ### github으로 바로 다운 받은 경우
 ```nodejs 
-const RestClient = require('./dist/bootpay')
+const RestClient = require('./dist/bootpay').RestClient
 
 RestClient.setConfig(
     '59bfc738e13f337dbd6ca48a',
