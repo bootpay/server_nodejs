@@ -3,7 +3,6 @@
 * typescript로 코딩이 되어있습니다
 * d.ts 파일이 첨부되어 typescript로도 코딩이 가능합니다.
 
-date: '`r paste("First created on Oct 01, 2018. Updated on", Sys.Date())`'
 ## 샘플 코드 
 ### NPM으로 다운 받은 경우
 ```nodejs 
