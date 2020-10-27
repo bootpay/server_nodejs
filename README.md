@@ -1,6 +1,5 @@
-# 1.0.0-beta2 ( next ) - Nightly Version
-
-### 1.0.0
+# Bootpay Server Client [![alt text](https://cdn.bootpay.co.kr/icon/npm.svg?[Digest::md5])](https://www.npmjs.com/package/bootpay-server-client)
+### 1.0.0 ( Stable )
 * typescript로 코딩이 되어있습니다
 * d.ts 파일이 첨부되어 typescript로도 코딩이 가능합니다.
 
