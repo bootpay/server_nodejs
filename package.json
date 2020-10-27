@@ -1,5 +1,5 @@
 {
-  "name": "bootpay-server-client",
+  "name": "@bootpay/server-rest-client",
   "version": "1.0.0",
   "description": "Bootpay Server Rest Client Javasrcipt Library",
   "main": "dist/bootpay.js",
