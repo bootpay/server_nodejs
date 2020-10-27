@@ -1,30 +1,28 @@
-var BootpayRest = require('../lib/bootpay');
-
-BootpayRest.setConfig(
-    '59bfc738e13f337dbd6ca48a',
-    'pDc0NwlkEX3aSaHTp/PPL/i8vn5E/CqRChgyEp/gHD0=',
-    'development'
-);
-
 (async () => {
-    let token = await BootpayRest.getAccessToken()
+    const RestClient = require('../dist/bootpay').RestClient
+    RestClient.setConfig(
+        '59bfc738e13f337dbd6ca48a',
+        'pDc0NwlkEX3aSaHTp/PPL/i8vn5E/CqRChgyEp/gHD0=',
+        'development'
+    )
+    const token = await RestClient.getAccessToken()
     if (token.status === 200) {
-        let response
+        let result
         try {
-            response = await BootpayRest.requestPayment({
+            result = await RestClient.requestPayment({
                 pg: 'kcp',
                 method: 'card',
-                order_id: (new Date).getTime(),
+                orderId: (new Date).getTime(),
                 price: 1000,
-                name: '테스트 부트페이 상품',
-                return_url: 'https://dev-api.bootpay.co.kr/callback',
+                itemName: '테스트 부트페이 상품',
+                returnUrl: 'https://dev-api.bootpay.co.kr/callback',
                 extra: {
                     expire: 30
                 }
             })
         } catch (e) {
-            response = e.data
+            return console.log(e)
         }
-        console.log(response)
+        console.log(result)
     }
 })()
