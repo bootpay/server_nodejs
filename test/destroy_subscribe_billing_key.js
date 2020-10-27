@@ -1,19 +1,17 @@
-var BootpayRest = require('../lib/bootpay');
-
-BootpayRest.setConfig(
-    '59bfc738e13f337dbd6ca48a',
-    'pDc0NwlkEX3aSaHTp/PPL/i8vn5E/CqRChgyEp/gHD0=',
-    'development'
-);
-
 (async () => {
-    let token = await BootpayRest.getAccessToken()
+    const RestClient = require('../dist/bootpay').RestClient
+    RestClient.setConfig(
+        '59bfc738e13f337dbd6ca48a',
+        'pDc0NwlkEX3aSaHTp/PPL/i8vn5E/CqRChgyEp/gHD0=',
+        'development'
+    )
+    let token = await RestClient.getAccessToken()
     if (token.status === 200) {
         let response
         try {
-            response = await BootpayRest.destroySubscribeBillingKey('5ef30dd58a1a350391ecdce3')
+            response = await RestClient.destroySubscribeBillingKey('5f97b8a40f606f03e8ab32a0')
         } catch (e) {
-            response = e.data
+            return console.log(e)
         }
         console.log(response)
     }
