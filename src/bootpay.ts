@@ -1,6 +1,6 @@
 import { BootpaySingleton } from "./lib/bootpay/singleton"
 import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from "axios"
-import { isBlank, isPresent } from "./lib/bootpay/support"
+import { isBlank, isPresent, objectKeyToUnderscore } from "./lib/bootpay/support"
 
 const API_URL: any = {
     development: 'https://dev-api.bootpay.co.kr',
@@ -100,6 +100,9 @@ export interface BootpayItemData {
     qty: number,
     itemName: string,
     price: number
+    cat1?: string
+    cat2?: string
+    cat3?: string
 }
 
 export interface BootpaySubscribeExtraData {
@@ -340,8 +343,8 @@ class BootpayRestClient extends BootpaySingleton {
                     tax_free: data.taxFree,
                     interest: data.interest,
                     quota: data.quota,
-                    items: data.items,
-                    user_info: data.userInfo,
+                    items: objectKeyToUnderscore(data.items),
+                    user_info: objectKeyToUnderscore(data.userInfo),
                     feedback_url: data.feedbackUrl,
                     feedback_content_type: data.feedbackContentType
                 }
@@ -369,8 +372,8 @@ class BootpayRestClient extends BootpaySingleton {
                     order_id: data.orderId,
                     price: data.price,
                     tax_free: data.taxFree,
-                    user_info: data.userInfo,
-                    item_info: data.items,
+                    user_info: objectKeyToUnderscore(data.userInfo),
+                    item_info: objectKeyToUnderscore(data.items),
                     item_name: data.itemName,
                     feedback_url: data.feedbackUrl,
                     feedback_content_type: data.feedbackContentType,
@@ -442,8 +445,8 @@ class BootpayRestClient extends BootpaySingleton {
                     price: data.price,
                     tax_free: data.taxFree,
                     name: data.itemName,
-                    user_info: data.userInfo,
-                    items: data.items,
+                    user_info: objectKeyToUnderscore(data.userInfo),
+                    items: objectKeyToUnderscore(data.items),
                     return_url: data.returnUrl,
                     extra: data.extra
                 }
