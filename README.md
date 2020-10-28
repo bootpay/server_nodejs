@@ -30,8 +30,6 @@ RestClient.getAccessToken().then(
     }
 )
 });
-
-### 더 자세한 정보는 [Docs](https://docs.bootpay.co.kr/api/validate?languageCurrentIndex=2)를 참조해주세요. 
 ```
 ### github으로 바로 다운 받은 경우
 
