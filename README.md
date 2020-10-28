@@ -1,5 +1,10 @@
 # Bootpay Server Rest Client [![alt text](https://cdn.bootpay.co.kr/icon/npm.svg)](https://www.npmjs.com/package/@bootpay/server-rest-client)
-### 1.0.0 ( Stable )
+
+### 1.0.2 ( Stable )
+* item 정보를 underscore로 보내는 로직 추가
+* user_info 정보를 underscore로 보내는 로직 추가 
+
+### 1.0.0 
 * typescript로 코딩이 되어있습니다
 * d.ts 파일이 첨부되어 typescript로도 코딩이 가능합니다.
 
