@@ -295,7 +295,7 @@ class BootpayRestClient extends BootpaySingleton {
                     expire_month: data.expireMonth,
                     identify_number: data.identifyNumber,
                     user_info: data.userInfo,
-                    extra: data.extra
+                    extra: objectKeyToUnderscore(data.extra)
                 }
             )
         } catch (e) {
