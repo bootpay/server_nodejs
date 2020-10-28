@@ -1,6 +1,6 @@
 {
   "name": "@bootpay/server-rest-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Bootpay Server Rest Client Javasrcipt Library",
   "main": "dist/bootpay.js",
   "types": "dist/bootpay.d.ts",
@@ -30,7 +30,7 @@
     "bootpay"
   ],
   "author": "Bootpay",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/bootpay/server_nodejs/issues"
   },
