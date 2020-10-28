@@ -448,7 +448,7 @@ class BootpayRestClient extends BootpaySingleton {
                     user_info: objectKeyToUnderscore(data.userInfo),
                     items: objectKeyToUnderscore(data.items),
                     return_url: data.returnUrl,
-                    extra: data.extra
+                    extra: objectKeyToUnderscore(data.extra)
                 }
             )
         } catch (e) {
