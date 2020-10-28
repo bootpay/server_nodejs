@@ -1,8 +1,8 @@
-# 3.0.0 ( next ) - Nightly Version
+# bootpay-rest-client deprecated!
 
-### 3.0.0 변경된 점
-* request.js -> axios로 변경 되었습니다.
-
+* 저장소가 곧 master -> main으로 변경됩니다.
+* npm패키지 역시 bootpay-rest-client -> @bootpay/server-rest-client 로 변경됩니다.
+* 변경되는 패키지 저장소 및 npm 패키지 설명은 [main 저장소](https://github.com/bootpay/server_nodejs/tree/main) 로 이동해서 확인해주시기 바랍니다.
  
 ### 2.0.0 변경된 점
 * 보안취약점 노출된 Restler -> request-promise-native 로 변경하였습니다.
