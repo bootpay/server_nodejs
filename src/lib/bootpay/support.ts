@@ -6,6 +6,10 @@ export interface Validate {
     isPresent(value: any): Boolean
 
     presence(value: any, defaultValue: any): any
+
+    toUnderscore(value: any): any
+
+    objectKeyToUnderscore(value: any): any
 }
 
 class ValidateMethod extends BootpaySingleton implements Validate {
@@ -34,6 +38,33 @@ class ValidateMethod extends BootpaySingleton implements Validate {
             return value
         }
     }
+
+    objectKeyToUnderscore(value: any): any {
+        let cloneObject: any = undefined
+        if (isPresent(value)) {
+            const _this = this
+            if (Array.isArray(value)) {
+                cloneObject = []
+                value.forEach((_value) => {
+                    let childObject: any = {}
+                    Object.keys(_value).forEach((key) => {
+                        childObject[_this.toUnderscore(key)] = _value[key]
+                    })
+                    cloneObject.push(childObject)
+                })
+            } else {
+                cloneObject = {}
+                Object.keys(value).forEach((key) => {
+                    cloneObject[_this.toUnderscore(key)] = value[key]
+                })
+            }
+        }
+        return cloneObject
+    }
+
+    toUnderscore(value: any): any {
+        return value.split(/(?=[A-Z])/).join('_').toLowerCase()
+    }
 }
 
 const ValidClass: ValidateMethod = ValidateMethod.currentInstance()
@@ -41,3 +72,5 @@ const ValidClass: ValidateMethod = ValidateMethod.currentInstance()
 export const isPresent = (value: any) => ValidClass.isPresent(value)
 export const isBlank = (value: any) => ValidClass.isBlank(value)
 export const presence = (value: any, defaultValue: any) => ValidClass.presence(value, defaultValue)
+export const toUnderscore = (value: any) => ValidClass.toUnderscore(value)
+export const objectKeyToUnderscore = (value: any) => ValidClass.objectKeyToUnderscore(value)

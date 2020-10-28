@@ -14,12 +14,6 @@
                 itemName: '테스트',
                 price: 1000,
                 orderId: (new Date()).getTime(),
-                userInfo: {
-                    username: 'test',
-                    email: 'test@bootpay.co.kr',
-                    phone: '01000000000',
-                    address: '테스트 지역'
-                },
                 feedbackUrl: 'https://dev-api.bootpay.co.kr/callback',
                 feedbackContentType: 'json'
             })
