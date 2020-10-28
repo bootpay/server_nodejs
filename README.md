@@ -34,6 +34,18 @@ RestClient.getAccessToken().then(
 ### 더 자세한 정보는 [Docs](https://docs.bootpay.co.kr/api/validate?languageCurrentIndex=2)를 참조해주세요. 
 ```
 ### github으로 바로 다운 받은 경우
+
+먼저 패키지를 모두 설치합니다
+```bash
+yarn install 
+```
+
+이후 빌드를 해서 dist로 js로 컴파일 합니다.
+```bash
+npm run build
+```
+
+그리고 dist로 output 된 패키지를 상대 경로로 가져와서 사용합니다.
 ```nodejs 
 const RestClient = require('./dist/bootpay').RestClient
 
