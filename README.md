@@ -1,7 +1,10 @@
 # Bootpay Server Rest Client [![alt text](https://cdn.bootpay.co.kr/icon/npm.svg)](https://www.npmjs.com/package/@bootpay/server-rest-client)
 
+### 1.0.4 ( Nightly )
+isBlank {} 체크 못하는 버그 수정
+
 ### 1.0.3 ( Stable )
-* extra를 undeerscore로 보내는 로직 추가
+* extra를 underscore로 보내는 로직 추가
 
 ### 1.0.2 
 * item 정보를 underscore로 보내는 로직 추가
