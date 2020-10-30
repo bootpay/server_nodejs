@@ -490,5 +490,3 @@ class BootpayRestClient extends BootpaySingleton {
 }
 
 export const RestClient = BootpayRestClient.currentInstance<BootpayRestClient>()
-
-export default RestClient
