@@ -12,7 +12,7 @@
             response = await RestClient.requestSubscribeBillingKey({
                 orderId: (new Date()).getTime(),
                 pg: 'nicepay',
-                name: '정기결제 30일권',
+                itemName: '정기결제 30일권',
                 cardNo: '[ 카드 번호 ]',
                 cardPw: '[ 카드 비밀번호 앞 2자리 ]',
                 expireYear: '[ 카드 만료 연도 ]',
