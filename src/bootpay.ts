@@ -54,6 +54,7 @@ export interface BootpayRequestSubscribeBillingPaymentData {
     items?: Array<BootpayItemData>,
     feedbackUrl?: string, // 결제 완료 후 피드백 받을 URL
     feedbackContentType?: string // Feedback 받을 경우 content-type - json, urlencoded
+    extra?: BootpaySubscribeExtraData
 }
 
 export interface BootpayReserveSubscribeBillingData {
@@ -107,6 +108,7 @@ export interface BootpayItemData {
 
 export interface BootpaySubscribeExtraData {
     subscribeTestPayment: number
+    rawData: number
 }
 
 export interface BootpayUserInfoData {
@@ -346,7 +348,8 @@ class BootpayRestClient extends BootpaySingleton {
                     items: objectKeyToUnderscore(data.items),
                     user_info: objectKeyToUnderscore(data.userInfo),
                     feedback_url: data.feedbackUrl,
-                    feedback_content_type: data.feedbackContentType
+                    feedback_content_type: data.feedbackContentType,
+                    extra: data.extra
                 }
             )
         } catch (e) {
