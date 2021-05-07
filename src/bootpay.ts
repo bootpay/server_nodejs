@@ -108,7 +108,7 @@ export interface BootpayItemData {
 
 export interface BootpaySubscribeExtraData {
     subscribeTestPayment: number
-    rawData: number
+    rawData?: number
 }
 
 export interface BootpayUserInfoData {
