@@ -1,6 +1,9 @@
 # Bootpay Server Rest Client [![alt text](https://cdn.bootpay.co.kr/icon/npm.svg)](https://www.npmjs.com/package/@bootpay/server-rest-client)
 
-### 1.0.4 ( Stable )
+### 1.0.6 ( Stable )
+* axios instance로 생성, interceptor가 global 영향을 받지 않도록 수정
+
+### 1.0.4 
 * isBlank {} 체크 못하는 버그 수정
 * subscribe payment ( 정기결제 ) extra 추가
 
