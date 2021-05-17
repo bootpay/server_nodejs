@@ -1,6 +1,6 @@
 {
   "name": "@bootpay/server-rest-client",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Bootpay Server Rest Client Javasrcipt Library",
   "main": "dist/bootpay.js",
   "types": "dist/bootpay.d.ts",
@@ -10,7 +10,9 @@
     "clear": "tsc --build --clean"
   },
   "dependencies": {
-    "axios": "^0.21.0"
+    "axios": "^0.21.0",
+    "lodash": "^4.17.21",
+    "@types/lodash": "^4.14.169"
   },
   "devDependencies": {
     "ts-node": "^9.0.0",

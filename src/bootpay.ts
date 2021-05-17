@@ -1,6 +1,7 @@
 import { BootpaySingleton } from "./lib/bootpay/singleton"
 import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from "axios"
 import { isBlank, isPresent, objectKeyToUnderscore } from "./lib/bootpay/support"
+import * as _ from 'lodash'
 
 const API_URL: any = {
     development: 'https://dev-api.bootpay.co.kr',
@@ -134,7 +135,7 @@ class BootpayRestClient extends BootpaySingleton {
         let _this = this
         this.mode = 'production'
         this.$token = undefined
-        this.$http = axios
+        this.$http = _.cloneDeep(axios)
         this.$http.interceptors.response.use((response: AxiosResponse<BootpayCommonResponse>): any => {
             if (isPresent(response.request) && isPresent(response.headers)) {
                 return response.data as BootpayCommonResponse
@@ -142,7 +143,7 @@ class BootpayRestClient extends BootpaySingleton {
                 return {
                     code: -100,
                     status: 500,
-                    message: `오류가 발생했습니다. ${response}`,
+                    message: `오류가 발생했습니다. ${ response }`,
                     data: response
                 } as BootpayCommonResponse
             }
@@ -152,7 +153,7 @@ class BootpayRestClient extends BootpaySingleton {
             } else {
                 return Promise.reject({
                     code: -100,
-                    message: `통신오류가 발생하였습니다. ${error.message}`,
+                    message: `통신오류가 발생하였습니다. ${ error.message }`,
                     status: 500
                 })
             }
@@ -181,7 +182,7 @@ class BootpayRestClient extends BootpaySingleton {
         this.privateKey = privateKey
         this.mode = isPresent(mode) ? mode : 'production'
         if (isBlank(API_URL[this.mode])) {
-            throw new Error(`환경설정 설정이 잘못되었습니다. 현재 설정된 모드: ${this.mode}, 가능한 모드: development, stage, production`)
+            throw new Error(`환경설정 설정이 잘못되었습니다. 현재 설정된 모드: ${ this.mode }, 가능한 모드: development, stage, production`)
         }
         return
     }
@@ -221,7 +222,7 @@ class BootpayRestClient extends BootpaySingleton {
         let response: BootpayCommonResponse
         try {
             response = await this.$http.get(
-                this.getApiUrl(`receipt/${receiptId}`)
+                this.getApiUrl(`receipt/${ receiptId }`)
             )
         } catch (e) {
             return Promise.reject(e)
@@ -317,7 +318,7 @@ class BootpayRestClient extends BootpaySingleton {
         let response: BootpayCommonResponse
         try {
             response = await this.$http.delete(
-                this.getApiUrl(`subscribe/billing/${billingKey}`)
+                this.getApiUrl(`subscribe/billing/${ billingKey }`)
             )
         } catch (e) {
             return Promise.reject(e)
@@ -401,7 +402,7 @@ class BootpayRestClient extends BootpaySingleton {
         let response: BootpayCommonResponse
         try {
             response = await this.$http.delete(
-                this.getApiUrl(`subscribe/billing/reserve/${reserveId}`)
+                this.getApiUrl(`subscribe/billing/reserve/${ reserveId }`)
             )
         } catch (e) {
             return Promise.reject(e)
@@ -420,7 +421,7 @@ class BootpayRestClient extends BootpaySingleton {
         let response: BootpayCommonResponse
         try {
             response = await this.$http.get(
-                this.getApiUrl(`certificate/${receiptId}`)
+                this.getApiUrl(`certificate/${ receiptId }`)
             )
         } catch (e) {
             return Promise.reject(e)
