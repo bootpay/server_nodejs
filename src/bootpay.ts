@@ -1,7 +1,6 @@
 import { BootpaySingleton } from "./lib/bootpay/singleton"
 import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from "axios"
 import { isBlank, isPresent, objectKeyToUnderscore } from "./lib/bootpay/support"
-import * as _ from 'lodash'
 
 const API_URL: any = {
     development: 'https://dev-api.bootpay.co.kr',
@@ -132,10 +131,11 @@ class BootpayRestClient extends BootpaySingleton {
 
     constructor() {
         super()
-        let _this = this
         this.mode = 'production'
         this.$token = undefined
-        this.$http = _.cloneDeep(axios)
+        this.$http = axios.create({
+            timeout: 60000
+        })
         this.$http.interceptors.response.use((response: AxiosResponse<BootpayCommonResponse>): any => {
             if (isPresent(response.request) && isPresent(response.headers)) {
                 return response.data as BootpayCommonResponse
@@ -159,15 +159,15 @@ class BootpayRestClient extends BootpaySingleton {
             }
         })
         this.$http.interceptors.request.use((config: AxiosRequestConfig) => {
-            if (isPresent(_this.$token)) {
-                config.headers.authorization = _this.$token
+            if (isPresent(this.$token)) {
+                config.headers.authorization = this.$token
             }
+            config.headers['Content-Type'] = 'application/json'
+            config.headers['Accept'] = 'application/json'
             return config
         }, (error) => {
             return Promise.reject(error)
         })
-        this.$http.defaults.headers.common['Content-Type'] = 'application/json'
-        this.$http.defaults.headers.common['Accept'] = 'application/json'
     }
 
     /**

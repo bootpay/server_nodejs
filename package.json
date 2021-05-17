@@ -10,9 +10,7 @@
     "clear": "tsc --build --clean"
   },
   "dependencies": {
-    "axios": "^0.21.0",
-    "lodash": "^4.17.21",
-    "@types/lodash": "^4.14.169"
+    "axios": "^0.21.1"
   },
   "devDependencies": {
     "ts-node": "^9.0.0",
