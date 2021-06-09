@@ -1,5 +1,8 @@
 # Bootpay Server Rest Client [![alt text](https://cdn.bootpay.co.kr/icon/npm.svg)](https://www.npmjs.com/package/@bootpay/server-rest-client)
 
+### 1.0.7 ( Stable )
+requestPayment params 데이터를 전달되도록 변경
+
 ### 1.0.6 ( Stable )
 * axios instance로 생성, interceptor가 global 영향을 받지 않도록 수정
 
