@@ -1,6 +1,10 @@
 # Bootpay Server Rest Client [![alt text](https://cdn.bootpay.co.kr/icon/npm.svg)](https://www.npmjs.com/package/@bootpay/server-rest-client)
 
-### 1.0.7 ( Stable )
+### 1.0.8 ( Stable )
+readme 업데이트 
+precompile 옵션 변경
+
+### 1.0.7 
 requestPayment params 데이터를 전달되도록 변경
 
 ### 1.0.6
