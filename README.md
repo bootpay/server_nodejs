@@ -3,7 +3,7 @@
 ### 1.0.7 ( Stable )
 requestPayment params 데이터를 전달되도록 변경
 
-### 1.0.6 ( Stable )
+### 1.0.6
 * axios instance로 생성, interceptor가 global 영향을 받지 않도록 수정
 
 ### 1.0.4 
