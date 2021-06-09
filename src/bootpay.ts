@@ -82,6 +82,7 @@ export interface BootpayRequestPaymentData {
     taxFree: number,
     itemName: string,
     returnUrl?: string,
+    params: any
     userInfo?: BootpayUserInfoData,
     items?: Array<BootpayItemData>,
     extra?: any
@@ -447,6 +448,7 @@ class BootpayRestClient extends BootpaySingleton {
                     methods: data.methods,
                     order_id: data.orderId,
                     price: data.price,
+                    params: data.params,
                     tax_free: data.taxFree,
                     name: data.itemName,
                     user_info: objectKeyToUnderscore(data.userInfo),
