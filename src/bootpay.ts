@@ -16,10 +16,11 @@ export interface BootpayCommonResponse<T = any> {
 }
 
 export interface BootpayCancelData {
-    receiptId: string,
-    price?: number,
-    name?: string,
-    reason?: string,
+    receiptId: string
+    price?: number
+    taxFree?: number
+    name?: string
+    reason?: string
     refund?: BootpayRefundData
 }
 
@@ -266,6 +267,7 @@ class BootpayRestClient extends BootpaySingleton {
                 {
                     receipt_id: data.receiptId,
                     price: data.price,
+                    tax_free: data.taxFree,
                     name: data.name,
                     reason: data.reason,
                     refund: data.refund
