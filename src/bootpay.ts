@@ -1,4 +1,3 @@
-import { BootpaySingleton } from "./lib/bootpay/singleton"
 import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from "axios"
 import { isBlank, isPresent, objectKeyToUnderscore } from "./lib/bootpay/support"
 
@@ -123,7 +122,7 @@ export interface BootpayUserInfoData {
 }
 
 
-class BootpayRestClient extends BootpaySingleton {
+export class BootpayRestClient {
 
     $http: AxiosInstance
     $token?: string
@@ -132,7 +131,6 @@ class BootpayRestClient extends BootpaySingleton {
     mode: string
 
     constructor() {
-        super()
         this.mode = 'production'
         this.$token = undefined
         this.$http = axios.create({
@@ -496,5 +494,3 @@ class BootpayRestClient extends BootpaySingleton {
         return [API_URL[this.mode], uri].join('/')
     }
 }
-
-export const RestClient = BootpayRestClient.currentInstance<BootpayRestClient>()

@@ -1,6 +1,7 @@
+import { BootpayRestClient } from "../src/bootpay";
 
 (async () => {
-    const RestClient = require('../dist/bootpay').RestClient
+    const RestClient = new require('../dist/bootpay').BootpayRestClient()
     RestClient.setConfig(
         '59bfc738e13f337dbd6ca48a',
         'pDc0NwlkEX3aSaHTp/PPL/i8vn5E/CqRChgyEp/gHD0=',
