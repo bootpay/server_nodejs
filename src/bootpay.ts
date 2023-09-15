@@ -3,8 +3,8 @@ import { isBlank, isPresent, objectKeyToUnderscore } from "./lib/bootpay/support
 
 const API_URL: any = {
     development: 'https://dev-api.bootpay.co.kr',
-    stage: 'https://stage-api.bootpay.co.kr',
-    production: 'https://api.bootpay.co.kr'
+    stage:       'https://stage-api.bootpay.co.kr',
+    production:  'https://api.bootpay.co.kr'
 }
 
 export interface BootpayCommonResponse<T = any> {
@@ -131,9 +131,9 @@ export class BootpayRestClient {
     mode: string
 
     constructor() {
-        this.mode = 'production'
+        this.mode   = 'production'
         this.$token = undefined
-        this.$http = axios.create({
+        this.$http  = axios.create({
             timeout: 60000
         })
         this.$http.interceptors.response.use((response: AxiosResponse<BootpayCommonResponse>): any => {
@@ -141,10 +141,10 @@ export class BootpayRestClient {
                 return response.data as BootpayCommonResponse
             } else {
                 return {
-                    code: -100,
-                    status: 500,
+                    code:    -100,
+                    status:  500,
                     message: `오류가 발생했습니다. ${ response }`,
-                    data: response
+                    data:    response
                 } as BootpayCommonResponse
             }
         }, function (error) {
@@ -152,9 +152,9 @@ export class BootpayRestClient {
                 return Promise.reject(error.response.data)
             } else {
                 return Promise.reject({
-                    code: -100,
+                    code:    -100,
                     message: `통신오류가 발생하였습니다. ${ error.message }`,
-                    status: 500
+                    status:  500
                 })
             }
         })
@@ -163,7 +163,7 @@ export class BootpayRestClient {
                 config.headers.authorization = this.$token
             }
             config.headers['Content-Type'] = 'application/json'
-            config.headers['Accept'] = 'application/json'
+            config.headers['Accept']       = 'application/json'
             return config
         }, (error) => {
             return Promise.reject(error)
@@ -179,8 +179,8 @@ export class BootpayRestClient {
      */
     setConfig(applicationId: string, privateKey: string, mode: string = 'production') {
         this.applicationId = applicationId
-        this.privateKey = privateKey
-        this.mode = isPresent(mode) ? mode : 'production'
+        this.privateKey    = privateKey
+        this.mode          = isPresent(mode) ? mode : 'production'
         if (isBlank(API_URL[this.mode])) {
             throw new Error(`환경설정 설정이 잘못되었습니다. 현재 설정된 모드: ${ this.mode }, 가능한 모드: development, stage, production`)
         }
@@ -201,7 +201,7 @@ export class BootpayRestClient {
                 this.getApiUrl('request/token'),
                 {
                     application_id: this.applicationId,
-                    private_key: this.privateKey
+                    private_key:    this.privateKey
                 }
             )
         } catch (e) {
@@ -264,11 +264,11 @@ export class BootpayRestClient {
                 this.getApiUrl('cancel'),
                 {
                     receipt_id: data.receiptId,
-                    price: data.price,
-                    tax_free: data.taxFree,
-                    name: data.name,
-                    reason: data.reason,
-                    refund: data.refund
+                    price:      data.price,
+                    tax_free:   data.taxFree,
+                    name:       data.name,
+                    reason:     data.reason,
+                    refund:     data.refund
                 }
             )
         } catch (e) {
@@ -290,22 +290,38 @@ export class BootpayRestClient {
             response = await this.$http.post(
                 this.getApiUrl('request/card_rebill'),
                 {
-                    order_id: data.orderId,
-                    pg: data.pg,
-                    item_name: data.itemName,
-                    card_no: data.cardNo,
-                    card_pw: data.cardPw,
-                    expire_year: data.expireYear,
-                    expire_month: data.expireMonth,
+                    order_id:        data.orderId,
+                    pg:              data.pg,
+                    item_name:       data.itemName,
+                    card_no:         data.cardNo,
+                    card_pw:         data.cardPw,
+                    expire_year:     data.expireYear,
+                    expire_month:    data.expireMonth,
                     identify_number: data.identifyNumber,
-                    user_info: data.userInfo,
-                    extra: objectKeyToUnderscore(data.extra)
+                    user_info:       data.userInfo,
+                    extra:           objectKeyToUnderscore(data.extra)
                 }
             )
         } catch (e) {
             return Promise.reject(e)
         }
         return Promise.resolve(response)
+    }
+
+    /**
+     * 빌링키 정보를 조회해서 가져온다
+     * Comment by GOSOMI
+     * @date: 2023-09-15
+     */
+    async lookupBillingKey(billingKey: string) {
+        try {
+            const response = await this.$http.get(
+                this.getApiUrl(`subscribe/billing_key/${ billingKey }`)
+            )
+            return Promise.resolve(response)
+        } catch (e) {
+            return Promise.reject(e)
+        }
     }
 
     /**
@@ -340,18 +356,18 @@ export class BootpayRestClient {
             response = await this.$http.post(
                 this.getApiUrl('subscribe/billing'),
                 {
-                    billing_key: data.billingKey,
-                    order_id: data.orderId,
-                    item_name: data.itemName,
-                    price: data.price,
-                    tax_free: data.taxFree,
-                    interest: data.interest,
-                    quota: data.quota,
-                    items: objectKeyToUnderscore(data.items),
-                    user_info: objectKeyToUnderscore(data.userInfo),
-                    feedback_url: data.feedbackUrl,
+                    billing_key:           data.billingKey,
+                    order_id:              data.orderId,
+                    item_name:             data.itemName,
+                    price:                 data.price,
+                    tax_free:              data.taxFree,
+                    interest:              data.interest,
+                    quota:                 data.quota,
+                    items:                 objectKeyToUnderscore(data.items),
+                    user_info:             objectKeyToUnderscore(data.userInfo),
+                    feedback_url:          data.feedbackUrl,
                     feedback_content_type: data.feedbackContentType,
-                    extra: data.extra
+                    extra:                 data.extra
                 }
             )
         } catch (e) {
@@ -373,17 +389,17 @@ export class BootpayRestClient {
             response = await this.$http.post(
                 this.getApiUrl('subscribe/billing/reserve'),
                 {
-                    billing_key: data.billingKey,
-                    order_id: data.orderId,
-                    price: data.price,
-                    tax_free: data.taxFree,
-                    user_info: objectKeyToUnderscore(data.userInfo),
-                    item_info: objectKeyToUnderscore(data.items),
-                    item_name: data.itemName,
-                    feedback_url: data.feedbackUrl,
+                    billing_key:           data.billingKey,
+                    order_id:              data.orderId,
+                    price:                 data.price,
+                    tax_free:              data.taxFree,
+                    user_info:             objectKeyToUnderscore(data.userInfo),
+                    item_info:             objectKeyToUnderscore(data.items),
+                    item_name:             data.itemName,
+                    feedback_url:          data.feedbackUrl,
                     feedback_content_type: data.feedbackContentType,
-                    scheduler_type: data.schedulerType,
-                    execute_at: data.executeAt
+                    scheduler_type:        data.schedulerType,
+                    execute_at:            data.executeAt
                 }
             )
         } catch (e) {
@@ -443,18 +459,18 @@ export class BootpayRestClient {
             response = await this.$http.post(
                 this.getApiUrl('request/payment'),
                 {
-                    pg: data.pg,
-                    method: data.method,
-                    methods: data.methods,
-                    order_id: data.orderId,
-                    price: data.price,
-                    params: data.params,
-                    tax_free: data.taxFree,
-                    name: data.itemName,
-                    user_info: objectKeyToUnderscore(data.userInfo),
-                    items: objectKeyToUnderscore(data.items),
+                    pg:         data.pg,
+                    method:     data.method,
+                    methods:    data.methods,
+                    order_id:   data.orderId,
+                    price:      data.price,
+                    params:     data.params,
+                    tax_free:   data.taxFree,
+                    name:       data.itemName,
+                    user_info:  objectKeyToUnderscore(data.userInfo),
+                    items:      objectKeyToUnderscore(data.items),
                     return_url: data.returnUrl,
-                    extra: objectKeyToUnderscore(data.extra)
+                    extra:      objectKeyToUnderscore(data.extra)
                 }
             )
         } catch (e) {
@@ -477,11 +493,11 @@ export class BootpayRestClient {
                 this.getApiUrl('request/user/token'),
                 {
                     user_id: data.userId,
-                    email: data.email,
-                    name: data.name,
-                    gender: data.gender,
-                    birth: data.birth,
-                    phone: data.phone
+                    email:   data.email,
+                    name:    data.name,
+                    gender:  data.gender,
+                    birth:   data.birth,
+                    phone:   data.phone
                 }
             )
         } catch (e) {
