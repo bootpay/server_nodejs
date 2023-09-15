@@ -1,6 +1,9 @@
 # Bootpay Server Rest Client [![alt text](https://cdn.bootpay.co.kr/icon/npm.svg)](https://www.npmjs.com/package/@bootpay/server-rest-client)
 
-### 1.0.9 ( Stable )
+### 1.0.10 ( Stable )
+* 빌링키 조회 기능 추가 및 버그 수정
+
+### 1.0.9 
 
 * 결제 취소시 taxFree 값 추가
 
