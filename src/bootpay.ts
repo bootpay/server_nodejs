@@ -314,14 +314,15 @@ export class BootpayRestClient {
      * @date: 2023-09-15
      */
     async lookupBillingKey(billingKey: string) {
+        let response: BootpayCommonResponse
         try {
-            const response = await this.$http.get(
+            response = await this.$http.get(
                 this.getApiUrl(`subscribe/billing_key/${ billingKey }`)
             )
-            return Promise.resolve(response)
         } catch (e) {
             return Promise.reject(e)
         }
+        return Promise.resolve(response)
     }
 
     /**
